@@ -1,0 +1,77 @@
+### Register User Bayu
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+  "username": "bayu",
+  "email": "bayu@example.com",
+  "password": "password123"
+}
+
+###
+
+### Login User Bayu
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+  "usernameOrEmail": "bayu",
+  "password": "password123"
+}
+
+###
+
+### Ambil Semua Kategori
+GET http://localhost:5000/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJiYXl1IiwiaWF0IjoxNzQ4NTMxMzY5LCJleHAiOjE3NDg1MzIyNjl9.JfxeWAMahK1eihshnBBOifgdAPQeYXujHxtjuLxofVo
+###
+
+### Buat Kategori Baru
+POST http://localhost:5000/categories
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJiYXl1IiwiaWF0IjoxNzQ4NTg0MjkzLCJleHAiOjE3NDg1ODUxOTN9.bTLzatA8JeD2Zu0h2HdrMfqQKLx9paN0cfcvKMFqzmg
+
+{
+  "name": "TCC"
+}
+
+###
+
+### Buat Task Baru (ganti <accessToken> dengan token hasil login)
+POST http://localhost:5000/tasks
+Content-Type: application/json
+Authorization: Bearer <accessToken>
+
+{
+  "title": "Belajar Node.js",
+  "description": "Pelajari dasar express dan sequelize",
+  "deadline": "2025-06-01",
+  "categoryId": 1
+}
+
+###
+
+### Ambil Semua Task User
+GET http://localhost:5000/tasks
+Authorization: Bearer <accessToken>
+
+###
+
+### Update Task by ID (ganti :id dengan ID task yang ingin diupdate)
+PUT http://localhost:5000/tasks/:id
+Content-Type: application/json
+Authorization: Bearer <accessToken>
+
+{
+  "title": "Belajar Node.js Lanjutan",
+  "description": "Pelajari express middleware",
+  "status": "completed",
+  "deadline": "2025-06-05",
+  "categoryId": 1
+}
+
+###
+
+### Hapus Task by ID (ganti :id dengan ID task yang ingin dihapus)
+DELETE http://localhost:5000/tasks/:id
+Authorization: Bearer <accessToken>

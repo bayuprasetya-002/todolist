@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My To Do List</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- LOGIN & REGISTER -->
+<div id="auth-container" class="container">
+  <!-- LOGIN -->
+  <div id="login-form">
+    <h2>Login</h2>
+    <input type="text" id="login-username-email" placeholder="Username atau Email" autocomplete="username" />
+    <input type="password" id="login-password" placeholder="Password" autocomplete="current-password" />
+    <button id="login-btn" class="btn-primary">Login</button>
+    <p>Belum punya akun? <button id="show-register-btn" class="btn-link">Daftar</button></p>
+  </div>
+
+  <!-- REGISTER -->
+  <div id="register-form" class="hidden">
+    <h2>Daftar Akun Baru</h2>
+    <input type="text" id="register-username" placeholder="Username" autocomplete="username" />
+    <input type="email" id="register-email" placeholder="Email" autocomplete="email" />
+    <input type="password" id="register-password" placeholder="Password" autocomplete="new-password" />
+    <button id="register-btn" class="btn-primary">Daftar</button>
+    <p>Sudah punya akun? <button id="show-login-btn" class="btn-link">Login</button></p>
+  </div>
+</div>
+
+<!-- APLIKASI UTAMA -->
+<div id="app-container" class="app-container" style="display:none;">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h2>TO-DO</h2>
+    <ul class="nav-list">
+      <li><button id="nav-tasks" class="nav-btn active">tasks</button></li>
+      <li><button id="nav-pending" class="nav-btn">Pending</button></li>
+      <li><button id="nav-complete" class="nav-btn">Complete</button></li>
+      
+    </ul>
+    <button id="logout-btn" class="logout-btn" title="Logout">Logout</button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <h1 id="main-title">Create Task</h1>
+
+    <section id="content-add" class="tab-content">
+      <form id="task-form" class="task-form">
+        <input type="text" id="task-title" placeholder="Masukkan task baru..." required />
+        <textarea id="task-description" placeholder="Deskripsi (opsional)"></textarea>
+        <input type="date" id="task-deadline" />
+        <select id="task-category">
+          <option value="">-- Pilih Kategori --</option>
+        </select>
+        <button type="submit" class="btn-primary">Save</button>
+      </form>
+    </section>
+
+    <section id="content-pending" class="tab-content hidden">
+      <label for="categoryFilterPending">Filter Kategori:</label>
+      <select id="categoryFilterPending">
+        <option value="">Semua</option>
+      </select>
+      <ul id="pending-list" class="task-list"></ul>
+    </section>
+
+    <section id="content-completed" class="tab-content hidden">
+      <label for="categoryFilterCompleted">Filter Kategori:</label>
+      <select id="categoryFilterCompleted">
+        <option value="">Semua</option>
+      </select>
+      <ul id="completed-list" class="task-list"></ul>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

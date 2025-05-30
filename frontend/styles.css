@@ -1,0 +1,446 @@
+/* Reset */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+body, html {
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f7fd;
+  color: #222;
+  overflow: hidden;
+}
+
+/* ======================= */
+/* LOGIN & REGISTER STYLES  */
+/* ======================= */
+
+#auth-container {
+  max-width: 420px;
+  margin: 100px auto;
+  padding: 30px 40px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgb(0 0 0 / 0.1);
+  text-align: center;
+}
+
+#auth-container h2 {
+  font-weight: 700;
+  color: #444;
+  margin-bottom: 24px;
+}
+
+#auth-container input[type="text"],
+#auth-container input[type="email"],
+#auth-container input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1.8px solid #ddd;
+  font-size: 1.1rem;
+  font-family: inherit;
+  transition: border-color 0.25s ease;
+  background-color: white;
+  cursor: text;
+  box-sizing: border-box;
+}
+
+#auth-container input:focus {
+  outline: none;
+  border-color: #9460ff;
+}
+
+#register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+#register-form button[type="submit"] {
+  border-radius: 14px;
+  padding: 14px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background-image: linear-gradient(90deg, #9460ff 0%, #4c1aff 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-image 0.3s ease;
+  user-select: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#register-form button[type="submit"]:hover {
+  background-image: linear-gradient(90deg, #4c1aff 0%, #9460ff 100%);
+}
+
+.btn-primary {
+  background-image: linear-gradient(90deg, #9460ff 0%, #4c1aff 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 14px 0;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background-image 0.3s ease;
+  user-select: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-primary:hover {
+  background-image: linear-gradient(90deg, #4c1aff 0%, #9460ff 100%);
+}
+
+#auth-container p {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 12px;
+}
+
+#auth-container p button.btn-link {
+  font-weight: 700;
+  color: #4c1aff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin-left: 6px;
+  font-size: 1rem;
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
+}
+
+/* ======================= */
+/* APP LAYOUT & SIDEBAR    */
+/* ======================= */
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar kiri */
+.sidebar {
+  background: #a9d6e5;
+  width: 160px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+  user-select: none;
+}
+
+.sidebar h2 {
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.nav-list {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin-bottom: auto;
+}
+
+.nav-list li {
+  margin-bottom: 10px;
+}
+
+.nav-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #555;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-align: left;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #4c1aff;
+  color: white;
+}
+
+.nav-btn.active {
+  background-color: #9460ff;
+  color: white;
+  box-shadow: 0 6px 18px rgba(148, 96, 255, 0.5);
+}
+
+.logout-btn {
+  margin-top: 20px;
+  background: #ff4b5c;
+  color: white;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #e33b4c;
+}
+
+/* Konten utama */
+.main-content {
+  flex: 1;
+  padding: 30px 40px;
+  overflow-y: auto;
+  background: white;
+}
+
+h1#main-title {
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #555;
+  text-align: center;
+}
+
+/* ======================= */
+/* TASK FORM & TASK LIST   */
+/* ======================= */
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.task-form input[type="text"],
+.task-form input[type="date"],
+.task-form textarea,
+.task-form select {
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1.8px solid #ddd;
+  font-size: 1rem;
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.25s ease;
+  width: 100%;
+}
+
+.task-form input[type="text"]:focus,
+.task-form input[type="date"]:focus,
+.task-form textarea:focus,
+.task-form select:focus {
+  outline: none;
+  border-color: #9460ff;
+}
+
+.task-form textarea {
+  min-height: 80px;
+}
+
+/* Task lists */
+.task-list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Each task item */
+.task-item {
+  width: 100%;
+  background: #f5f0ff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 3px 10px rgb(148 96 255 / 0.15);
+  position: relative;
+  user-select: none;
+}
+
+/* Task title */
+.task-title {
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+  color: #2a0e97;
+  word-break: break-word;
+}
+
+/* Task category */
+.task-category {
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #6a4baf;
+  margin-bottom: 6px;
+}
+
+/* Task description */
+.task-description {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #4b2ab9;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Task deadline */
+.task-deadline {
+  font-size: 0.85rem;
+  color: #7555bb;
+}
+
+/* Task actions buttons container */
+.task-actions {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  display: flex;
+  gap: 14px;
+}
+
+/* Task action buttons */
+.task-actions button {
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  color: #886fc9;
+  transition: color 0.2s ease;
+  padding: 0 4px;
+}
+
+.task-actions button:hover {
+  color: #4c1aff;
+}
+
+.task-actions .btn-complete {
+  color: #33a84f;
+}
+
+/* ======================= */
+/* TAB CONTENT SECTIONS    */
+/* ======================= */
+
+.tab-content {
+  display: block;
+}
+
+.tab-content.hidden {
+  display: none;
+}
+
+/* ======================= */
+/* FILTER SELECTS          */
+/* ======================= */
+
+label[for="categoryFilterPending"],
+label[for="categoryFilterCompleted"] {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: #333;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  user-select: none;
+}
+
+#categoryFilterPending,
+#categoryFilterCompleted {
+  max-width: 600px;
+  margin: 0 auto 24px auto;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border-radius: 14px;
+  border: 1.8px solid #ddd;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s ease;
+  display: block;
+}
+
+#categoryFilterPending:focus,
+#categoryFilterCompleted:focus {
+  outline: none;
+  border-color: #9460ff;
+}
+
+/* ======================= */
+/* RESPONSIVE DESIGN       */
+/* ======================= */
+
+@media screen and (max-width: 600px) {
+  #auth-container {
+    margin: 50px 20px;
+    padding: 20px;
+  }
+
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .task-list {
+    max-width: 100%;
+  }
+
+  .task-item {
+    padding: 16px 14px;
+  }
+
+  #register-form {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  #register-email,
+  #register-password {
+    flex: none;
+    width: 100%;
+  }
+
+  #register-btn {
+    width: 100%;
+    min-width: auto;
+  }
+}
