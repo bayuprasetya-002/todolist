@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - My To Do List</title>
+  <link rel="stylesheet" href="styles1.css" />
+</head>
+<body class="auth-page">
+
+<div id="auth-container" class="auth-container">
+  <!-- Login Section -->
+  <form id="login-form" class="auth-form login-form" autocomplete="off">
+    <div class="illustration">
+      <img src="images/login.png" alt="Ilustrasi Login" />
+    </div>
+    <div class="form-content">
+      <h2>Sign In</h2>
+      <input type="text" id="login-username-email" placeholder="Enter Username" required />
+      <input type="password" id="login-password" placeholder="Enter Password" required />
+      <button id="login-btn" type="submit" class="btn-primary">Login</button>
+      <p>Don't have an account?
+        <button id="show-register-btn" type="button" class="btn-link">Create One</button>
+      </p>
+    </div>
+  </form>
+
+  <!-- Register Section -->
+  <form id="register-form" class="auth-form register-form hidden" autocomplete="off">
+    <div class="form-content">
+      <h2>Sign Up</h2>
+      <input type="text" id="register-username" placeholder="Enter Username" required />
+      <input type="email" id="register-email" placeholder="Enter Email" required />
+      <input type="password" id="register-password" placeholder="Enter Password" required />
+      <button id="register-btn" type="submit" class="btn-primary">Register</button>
+      <p>Already have an account?
+        <button id="show-login-btn" type="button" class="btn-link">Sign In</button>
+      </p>
+    </div>
+    <div class="illustration">
+      <img src="images/register.png" alt="Ilustrasi Register" />
+    </div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

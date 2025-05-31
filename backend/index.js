@@ -21,11 +21,18 @@ app.use(cors());
 app.use(express.json());
 
 // Definisikan relasi Sequelize
+
+// User dan Task
 User.hasMany(Task, { foreignKey: "userId" });
 Task.belongsTo(User, { foreignKey: "userId" });
 
+// Category dan Task
 Category.hasMany(Task, { foreignKey: "categoryId" });
 Task.belongsTo(Category, { foreignKey: "categoryId" });
+
+// ** Tambahkan relasi User dan Category untuk kategori per-user **
+User.hasMany(Category, { foreignKey: "userId" });
+Category.belongsTo(User, { foreignKey: "userId" });
 
 // Public routes (tidak perlu autentikasi)
 app.use(AuthRoute);

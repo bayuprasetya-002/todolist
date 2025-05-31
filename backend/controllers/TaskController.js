@@ -22,14 +22,23 @@ export const getTasks = async (req, res) => {
 
 export const getTaskById = async (req, res) => {
   try {
-    const { id } = req.params;
-    const task = await Task.findOne({ where: { id, userId: req.user.id } });
-    if (!task) return res.status(404).json({ message: "Task not found" });
+    const taskId = parseInt(req.params.id, 10);
+    console.log("Requested Task ID:", taskId);
+    console.log("Authenticated User ID:", req.user.id);
+
+    const task = await Task.findOne({ where: { id: taskId, userId: req.user.id } });
+    if (!task) {
+      console.log("Task not found in DB for given user.");
+      return res.status(404).json({ message: "Task not found" });
+    }
     res.status(200).json(task);
   } catch (error) {
+    console.error("Error in getTaskById:", error);
     res.status(500).json({ message: error.message });
   }
 };
+
+
 
 export const createTask = async (req, res) => {
   try {
@@ -87,3 +96,28 @@ export const deleteTask = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const getStatistics = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const totalTasks = await Task.count({ where: { userId } });
+    const completedTasks = await Task.count({ where: { userId, status: "completed" } });
+    const pendingTasks = await Task.count({ where: { userId, status: "pending" } });
+
+    const completedPercent = totalTasks ? Math.round((completedTasks / totalTasks) * 100) : 0;
+    const pendingPercent = totalTasks ? Math.round((pendingTasks / totalTasks) * 100) : 0;
+
+    res.json({
+      totalTasks,
+      completedTasks,
+      pendingTasks,
+      completedPercent,
+      pendingPercent,
+    });
+  } catch (error) {
+    console.error("Error fetching statistics:", error);
+    res.status(500).json({ message: "Failed to fetch statistics" });
+  }
+};
+

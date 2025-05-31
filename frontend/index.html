@@ -1,85 +1,147 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>My To Do List</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - My To Do List</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
 
-<!-- LOGIN & REGISTER -->
-<div id="auth-container" class="container">
-  <!-- LOGIN -->
-  <div id="login-form">
-    <h2>Login</h2>
-    <input type="text" id="login-username-email" placeholder="Username atau Email" autocomplete="username" />
-    <input type="password" id="login-password" placeholder="Password" autocomplete="current-password" />
-    <button id="login-btn" class="btn-primary">Login</button>
-    <p>Belum punya akun? <button id="show-register-btn" class="btn-link">Daftar</button></p>
-  </div>
+<body class="app-page">
 
-  <!-- REGISTER -->
-  <div id="register-form" class="hidden">
-    <h2>Daftar Akun Baru</h2>
-    <input type="text" id="register-username" placeholder="Username" autocomplete="username" />
-    <input type="email" id="register-email" placeholder="Email" autocomplete="email" />
-    <input type="password" id="register-password" placeholder="Password" autocomplete="new-password" />
-    <button id="register-btn" class="btn-primary">Daftar</button>
-    <p>Sudah punya akun? <button id="show-login-btn" class="btn-link">Login</button></p>
-  </div>
-</div>
+  <div id="app-container" class="app-container">
 
-<!-- APLIKASI UTAMA -->
-<div id="app-container" class="app-container" style="display:none;">
-  <!-- Sidebar -->
-  <nav class="sidebar">
-    <h2>TO-DO</h2>
-    <ul class="nav-list">
-      <li><button id="nav-tasks" class="nav-btn active">tasks</button></li>
-      <li><button id="nav-pending" class="nav-btn">Pending</button></li>
-      <li><button id="nav-complete" class="nav-btn">Complete</button></li>
-      
-    </ul>
-    <button id="logout-btn" class="logout-btn" title="Logout">Logout</button>
-  </nav>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">
+          <span class="highlight">Dash</span>board
+        </div>
+        <button id="sidebar-toggle" class="sidebar-toggle" title="Toggle Sidebar">&#9776;</button>
+      </div>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <h1 id="main-title">Create Task</h1>
+      <div class="user-info">
+        <div id="user-name" class="user-name" style="text-align: center;"></div>
+        <div id="user-email" class="user-email" style="text-align: center;"></div>
+      </div>
 
-    <section id="content-add" class="tab-content">
-      <form id="task-form" class="task-form">
-        <input type="text" id="task-title" placeholder="Masukkan task baru..." required />
-        <textarea id="task-description" placeholder="Deskripsi (opsional)"></textarea>
-        <input type="date" id="task-deadline" />
-        <select id="task-category">
-          <option value="">-- Pilih Kategori --</option>
+      <ul class="nav-list">
+        <li><button id="nav-dashboard" class="nav-btn active"><i
+              class="icon">&#128202;</i><span>Dashboard</span></button></li>
+        <li><button id="nav-add-task" class="nav-btn"><i class="icon">&#10133;</i> <span>Add task</span></button></li>
+        <li><button id="nav-pending" class="nav-btn"><i class="icon">&#9203;</i> <span>Pending</span></button></li>
+        <li><button id="nav-complete" class="nav-btn"><i class="icon">&#9989;</i> <span>Complete</span></button></li>
+        <li><button id="nav-category" class="nav-btn"><i class="icon">&#9776;</i> <span>Task Categories</span></button>
+        </li>
+        <li><button id="nav-help" class="nav-btn"><i class="icon">?</i> <span>Help</span></button></li>
+
+      </ul>
+
+      <button id="logout-btn" class="logout-btn" title="Logout">Logout</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="page-header">
+        <div id="welcome-text" class="welcome-text">Welcome back, User 👋</div>
+        <div id="current-date" class="current-date"></div>
+      </header>
+
+      <section id="dashboard-content" class="dashboard-content">
+        <h2>To Do List</h2>
+        <p class="dashboard-desc">
+          Website is an online platform that allows users to create, manage, and prioritize to-do lists.
+          This website serves as a tool to help organize work, increase productivity, and ensure that no tasks are
+          missed.
+        </p>
+
+        <div class="task-status-card">
+          <div class="status-item">
+            <div class="status-circle completed">
+              <span id="percent-completed">0%</span>
+            </div>
+            <div class="status-label">Completed</div>
+          </div>
+          <div class="status-item">
+            <div class="status-circle in-progress">
+              <span id="percent-inprogress">0%</span>
+            </div>
+            <div class="status-label">In Progress</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add Task Section -->
+      <section id="content-add" class="tab-content hidden">
+        <h2>Add Task</h2>
+        <form id="task-form" autocomplete="off">
+          <input type="text" id="task-title" placeholder="Masukkan task baru..." required />
+          <textarea id="task-description" placeholder="Deskripsi (opsional)"></textarea>
+          <input type="date" id="task-deadline" />
+          <select id="task-category">
+            <option value="">-- Pilih Kategori --</option>
+          </select>
+          <button type="submit" class="btn-primary">Save</button>
+        </form>
+      </section>
+
+      <!-- Pending Tasks Section -->
+      <section id="content-pending" class="tab-content hidden">
+        <h2>Pending Tasks</h2>
+        <label for="categoryFilterPending">Filter Kategori:</label>
+        <select id="categoryFilterPending">
+          <option value="">Semua</option>
         </select>
-        <button type="submit" class="btn-primary">Save</button>
-      </form>
-    </section>
+        <ul id="pending-list" class="task-list"></ul>
+      </section>
 
-    <section id="content-pending" class="tab-content hidden">
-      <label for="categoryFilterPending">Filter Kategori:</label>
-      <select id="categoryFilterPending">
-        <option value="">Semua</option>
-      </select>
-      <ul id="pending-list" class="task-list"></ul>
-    </section>
+      <!-- Completed Tasks Section -->
+      <section id="content-completed" class="tab-content hidden">
+        <h2>Completed Tasks</h2>
+        <label for="categoryFilterCompleted">Filter Kategori:</label>
+        <select id="categoryFilterCompleted">
+          <option value="">Semua</option>
+        </select>
+        <ul id="completed-list" class="task-list"></ul>
+      </section>
 
-    <section id="content-completed" class="tab-content hidden">
-      <label for="categoryFilterCompleted">Filter Kategori:</label>
-      <select id="categoryFilterCompleted">
-        <option value="">Semua</option>
-      </select>
-      <ul id="completed-list" class="task-list"></ul>
-    </section>
-  </main>
-</div>
+      <!-- Categories Section -->
+      <section id="content-category" class="tab-content hidden">
+        <h2>Task Categories</h2>
+        <form id="category-form" autocomplete="off">
+          <input type="text" id="category-name" style="text-align: center;" placeholder="Masukkan nama kategori " required />
+          <button type="submit" class="btn-primary" style="display: block; margin: 0 auto;">
+            Tambah Kategori
+          </button>
+        </form>
+        <ul id="category-list" class="category-list"></ul>
+      </section>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="js/utils.js"></script>
-<script src="js/script.js"></script>
+      <!-- Help Section -->
+      <section id="help-section" class="tab-content hidden">
+        <h2>Help - Panduan Penggunaan Aplikasi</h2>
+        <p style="text-align: center;">
+          Aplikasi To Do List ini dirancang untuk membantu Anda mengelola tugas sehari-hari dengan lebih mudah dan
+          efisien. Pada menu Dashboard, Anda dapat melihat ringkasan status tugas seperti yang telah selesai dan yang
+          sedang berjalan. Gunakan menu Add Task untuk membuat tugas baru dengan judul, deskripsi, tenggat waktu, dan
+          kategori yang sesuai. Di menu Pending dan Complete, Anda dapat memantau dan mengelola tugas berdasarkan
+          statusnya, termasuk menandai tugas sebagai selesai atau mengeditnya. Menu Task Categories memungkinkan Anda
+          membuat, mengubah, dan menghapus kategori untuk mengelompokkan tugas secara rapi. Jangan lupa untuk
+          memanfaatkan fitur filter kategori agar pencarian tugas menjadi lebih mudah dan cepat. Jika Anda membutuhkan
+          bantuan lebih lanjut, silakan hubungi admin atau kunjungi dokumentasi resmi aplikasi ini.
+          123220001-123220002
+        </p>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/main.js"></script>
+
 </body>
+
 </html>

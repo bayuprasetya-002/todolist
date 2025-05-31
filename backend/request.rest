@@ -15,21 +15,22 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-  "usernameOrEmail": "bayu",
-  "password": "password123"
+  "usernameOrEmail": "detri",
+  "password": "123"
 }
 
 ###
 
 ### Ambil Semua Kategori
 GET http://localhost:5000/categories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJiYXl1IiwiaWF0IjoxNzQ4NTMxMzY5LCJleHAiOjE3NDg1MzIyNjl9.JfxeWAMahK1eihshnBBOifgdAPQeYXujHxtjuLxofVo
+Authorization: Bearer <accessToken>
+
 ###
 
 ### Buat Kategori Baru
 POST http://localhost:5000/categories
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJiYXl1IiwiaWF0IjoxNzQ4NTg0MjkzLCJleHAiOjE3NDg1ODUxOTN9.bTLzatA8JeD2Zu0h2HdrMfqQKLx9paN0cfcvKMFqzmg
+Authorization: Bearer <accessToken>
 
 {
   "name": "TCC"
@@ -37,7 +38,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hb
 
 ###
 
-### Buat Task Baru (ganti <accessToken> dengan token hasil login)
+### Buat Task Baru
 POST http://localhost:5000/tasks
 Content-Type: application/json
 Authorization: Bearer <accessToken>
@@ -75,3 +76,10 @@ Authorization: Bearer <accessToken>
 ### Hapus Task by ID (ganti :id dengan ID task yang ingin dihapus)
 DELETE http://localhost:5000/tasks/:id
 Authorization: Bearer <accessToken>
+
+###
+
+### Ambil Statistik Task User (Dashboard)
+GET http://localhost:5000/tasks/statistics
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJkZXRyaSIsImlhdCI6MTc0ODY3NzE5MiwiZXhwIjoxNzQ4Njc4MDkyfQ.VqHA8ly50B5i3YZN01okRzExUN3sBRCIMgHXw5drt8A
+###

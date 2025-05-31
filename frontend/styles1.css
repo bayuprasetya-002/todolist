@@ -1,0 +1,153 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, html {
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  overflow: hidden;
+}
+
+/* LOGIN & REGISTER STYLES */
+body.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fcd6d6 url('images/bg.png') repeat;
+  background-size: 715px 507px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#auth-container {
+  display: flex;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 900px;
+  max-width: 95vw;
+  height: 500px;
+}
+
+.auth-form {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 30px;
+}
+
+.form-content {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-content h2 {
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #222;
+  font-size: 1.8rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+input:focus {
+  border-color: #ff6b6b;
+  outline: none;
+}
+
+.btn-primary {
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: none;
+  padding: 14px;
+  width: 120px;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  background-color: #ff6b6b;
+  color: white;
+  box-sizing: border-box;
+}
+
+.btn-primary:hover {
+  background-color: #e85555;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #2d6cdf;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin-left: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.illustration {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.illustration img {
+  max-width: 80%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+#login-form,
+#register-form {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Responsive login/register */
+@media screen and (max-width: 600px) {
+  body.auth-page {
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+  #auth-container {
+    flex-direction: column;
+    height: auto;
+    margin: 0 20px;
+  }
+  .auth-form {
+    padding: 20px 10px;
+  }
+  .form-content {
+    max-width: 100%;
+  }
+  .illustration {
+    display: none;
+  }
+}
