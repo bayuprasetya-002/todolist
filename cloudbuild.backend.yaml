@@ -2,7 +2,7 @@ steps:
   # 1. Build Docker image untuk backend
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "gcr.io/$PROJECT_ID/be-0201", "."]
-    dir: "backendtodo"
+    dir: "backend"
 
   # 2. Push ke Container Registry / Artifact Registry
   - name: "gcr.io/cloud-builders/docker"

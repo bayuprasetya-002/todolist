@@ -7,7 +7,7 @@ steps:
       - deploy
       - app.yaml
       - '--quiet'
-    dir: 'frontendtodo'  # Ganti dengan direktori frontend yang berisi app.yaml dan file HTML kamu
+    dir: 'frontend'  # Ganti dengan direktori frontend yang berisi app.yaml dan file HTML kamu
 
 options:
   logging: CLOUD_LOGGING_ONLY  # Opsional: hanya mencatat log ke Google Cloud Logging
